@@ -35,6 +35,6 @@ if __name__ == "__main__":
     qa = VectorDBQA.from_chain_type(
         llm=OpenAI(), chain_type="stuff", vectorstore=docsearch, return_source_documents=True
     )
-    query = "What is a vector DB? Give me a 15 word answer for a begginner"
+    query = "what existing databases are including build in vector search plugins?"
     result = qa({"query": query})
     print(result)
