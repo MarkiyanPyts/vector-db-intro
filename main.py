@@ -25,9 +25,12 @@ if __name__ == "__main__":
 
     embeddings = OpenAIEmbeddings()
 
-    docsearch = Pinecone.from_documents(
-        docs, embeddings, index_name="markiyan-test-index"
-    )
+    # docsearch = Pinecone.from_documents(
+    #     docs, embeddings, index_name="markiyan-test-index"
+    # )
+
+    # if you already have an index, you can load it like this
+    docsearch = Pinecone.from_existing_index("markiyan-test-index", embeddings)
 
     qa = VectorDBQA.from_chain_type(
         llm=OpenAI(), chain_type="stuff", vectorstore=docsearch, return_source_documents=True
